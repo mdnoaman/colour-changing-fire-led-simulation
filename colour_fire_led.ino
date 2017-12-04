@@ -3,7 +3,7 @@
 #define LED_PIN     13
 #define COLOR_ORDER GRB
 #define CHIPSET     WS2811
-#define NUM_LEDS    15
+#define NUM_LEDS    15  // actually the number of leds on the strip was only 7, but larger number is used to get "better" fire effects for such less number
 
 #define BRIGHTNESS  200
 #define FRAMES_PER_SECOND 40
@@ -87,13 +87,13 @@ void Fire2012()
     
     // Step 3.  Randomly ignite new 'sparks' of heat near the bottom
     if( random8() < SPARKING ) {
-      int y = random8(3);
+      int y = random8(3);  // the number '3' should be changed if playing with large number of leds array
       heat[y] = qadd8( heat[y], random8(160,255) );
     }
 
     kk = kk + 1;
 
-    if (kk>0 & kk<=250){
+    if (kk>0 & kk<=250){   // the following colour scheme can be modified in order to get as many different color transision  
       r1 = kk%250;
       g1 = (-kk)%250;
       b1 = 0;
